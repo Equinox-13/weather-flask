@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request 
 import json 
 import urllib.request 
+import requests
 
 
 # Flask constructor takes the name of  
@@ -13,16 +14,17 @@ def weather():
 		city = request.form['city'] 
 	else: 
 		# for default name mumbai 
-		city = 'mumbai'
+		city = 'Mumbai'
 
 	# API key 
-	# api = 'ae4b99fcae74c6481413e410d182e520'
+	api = 'ae4b99fcae74c6481413e410d182e520'
 
 	# source contain json data from api 
-	source = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api).read() 
-
+	# source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api).read() 
+	source = requests.get('https://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api)
 	# converting JSON data to a dictionary 
-	list_of_data = json.loads(source) 
+	list_of_data = source.json() 
+	print(list_of_data)
 
 	# data for variable list_of_data 
 	data = { 
