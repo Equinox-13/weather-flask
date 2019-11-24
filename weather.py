@@ -19,8 +19,7 @@ def weather():
 	# API key 
 	api = 'ae4b99fcae74c6481413e410d182e520'
 
-	# source contain json data from api 
-	# source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api).read() 
+	# source contain json data from api  
 	source = requests.get('https://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api)
 	# converting JSON data to a dictionary 
 	list_of_data = source.json() 
