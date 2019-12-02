@@ -17,13 +17,12 @@ def weather():
 		city = 'Mumbai'
 
 	# API key 
-	api = 'ae4b99fcae74c6481413e410d182e520'
+ 	api = 'ae4b99fcae74c6481413e410d182e520'
 
 	# source contain json data from api  
-	source = requests.get('https://api.openweathermap.org/data/2.5/weather?q =' + city + '&appid =' + api)
+	source = requests.get('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + api)
 	# converting JSON data to a dictionary 
 	list_of_data = source.json() 
-	print(list_of_data)
 
 	# data for variable list_of_data 
 	data = { 
@@ -33,8 +32,7 @@ def weather():
 		"temp": str(list_of_data['main']['temp']) + 'k', 
 		"pressure": str(list_of_data['main']['pressure']), 
 		"humidity": str(list_of_data['main']['humidity']), 
-	} 
-	print(data) 
+	}  
 	return render_template('index.html', data = data) 
 
 
